@@ -15,7 +15,10 @@
     "dist/**/*"
   ],
   "author": "Morsby",
-  "repository": "github:morsby/string-escape-spacing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morsby/string-escape-spacing.git"
+  },
   "keywords": [
     "string",
     "escaping",
