@@ -15,7 +15,12 @@
     "dist/**/*"
   ],
   "author": "Morsby",
-  "reposiory": "github:morsby/string-escape-spacing",
+  "repository": "github:morsby/string-escape-spacing",
+  "keywords": [
+    "string",
+    "escaping",
+    "spacing"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^25.2.1",
