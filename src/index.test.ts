@@ -70,3 +70,18 @@ describe("code examples", () => {
     expect(escapeString(inputMultilineCode)).toBe(expectedMultilineCode);
   });
 });
+
+describe("ignores non-enclosed strings", () => {
+  test("newlines", () => {
+    expect(escapeString(`Hello\nthere\nfriend`)).toBe(`Hello\nthere\nfriend`);
+  });
+  test("carriage returns", () => {
+    expect(escapeString(`Hello\rthere\rfriend`)).toBe(`Hello\rthere\rfriend`);
+  });
+  test("tabs", () => {
+    expect(escapeString(`Hello\tthere\tfriend`)).toBe(`Hello\tthere\tfriend`);
+  });
+  test("vertical tabs", () => {
+    expect(escapeString(`Hello\vthere\vfriend`)).toBe(`Hello\vthere\vfriend`);
+  });
+});
