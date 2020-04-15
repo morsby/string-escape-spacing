@@ -1,7 +1,7 @@
 {
-  "name": "js-string-escaper",
+  "name": "string-escape-spacing",
   "version": "0.0.1",
-  "description": "A small package to escape special characters in input strings.",
+  "description": "A small package to escape spacing chacaters (e.g. newlines) in strings.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
