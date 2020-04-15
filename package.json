@@ -1,0 +1,40 @@
+{
+  "name": "js-string-escaper",
+  "version": "0.0.1",
+  "description": "A small package to escape special characters in input strings.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepack": "yarn build",
+    "prepublish": "yarn lint && yarn test"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "author": "Morsby",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/node": "^13.11.1",
+    "husky": "^4.2.5",
+    "jest": "^25.3.0",
+    "prettier": "^2.0.4",
+    "ts-jest": "^25.3.1",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format && yarn lint",
+      "pre-push": "yarn test"
+    }
+  }
+}
