@@ -1,6 +1,6 @@
 {
   "name": "string-escape-spacing",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A small package to escape spacing chacaters (e.g. newlines) in strings.",
   "main": "dist/index.js",
   "scripts": {
