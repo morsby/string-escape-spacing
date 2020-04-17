@@ -69,6 +69,54 @@ describe("code examples", () => {
     `.trim();
     expect(escapeString(inputMultilineCode)).toBe(expectedMultilineCode);
   });
+
+  test("large block with no enclosed spaces", () => {
+    const input = `
+    <Flex bg="black">
+    <Sidebar bg="primary">
+      <ul>
+        <li>1.\nNewline</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </Sidebar>
+    <Main bg="secondary">Woop de doop</Main>
+  </Flex>`.trim();
+    expect(escapeString(input)).toBe(input);
+  });
+
+  test("large block WITH enclosed spaces", () => {
+    const input = `
+    <Flex bg="black">
+    <Sidebar bg="primary">
+      <ul>
+        <li>1. "\nNo newline"</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </Sidebar>
+    <Main bg="secondary">Woop de doop</Main>
+  </Flex>`.trim();
+
+    const expected = `
+    <Flex bg="black">
+    <Sidebar bg="primary">
+      <ul>
+        <li>1. "\\nNo newline"</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </Sidebar>
+    <Main bg="secondary">Woop de doop</Main>
+  </Flex>`.trim();
+    expect(escapeString(input)).toBe(expected);
+  });
 });
 
 describe("ignores non-enclosed strings", () => {
@@ -83,5 +131,15 @@ describe("ignores non-enclosed strings", () => {
   });
   test("vertical tabs", () => {
     expect(escapeString(`Hello\vthere\vfriend`)).toBe(`Hello\vthere\vfriend`);
+  });
+});
+
+describe("surrogate pairs in strings", () => {
+  test("emojis", () => {
+    expect(escapeString("Hello, 🐒")).toBe("Hello, 🐒");
+  });
+
+  test("emojis in quotes", () => {
+    expect(escapeString('fmt.Printf("🐒\n")')).toBe('fmt.Printf("🐒\\n")');
   });
 });
